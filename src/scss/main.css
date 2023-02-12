@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Metamorphous&family=Space+Mono&display=swap");
+body {
+  width: 180vh;
+  height: auto;
+  display: flex;
+  color: aliceblue;
+  background-image: url("../images/SCAG_2560x1600_Wallpaper.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  margin: 0 auto;
+  font-family: "Metamorphous", cursive;
+}
+
+.grid > div {
+  background-color: rgba(90, 93, 95, 0.8);
+  border: solid 2px rgba(122, 122, 122, 0.8);
+}
+
+#nav ul {
+  display: flex;
+}
+
+#nav li {
+  list-style: none;
+  display: block;
+}
+
+#hero-section {
+  height: 10vh;
+}
+
+.stat-block {
+  display: flex;
+  text-align: center;
+  width: 15vh;
+}
+
+.tooltip {
+  visibility: hidden;
+  text-align: center;
+  max-width: 500px;
+  position: absolute;
+  line-height: 20px;
+  z-index: 1;
+  padding: 10px;
+  background-color: rgb(43, 40, 40);
+}
+
+.info:hover .tooltip {
+  visibility: visible;
+}
+
+/*# sourceMappingURL=main.css.map */
