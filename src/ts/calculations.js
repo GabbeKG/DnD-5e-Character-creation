@@ -1,19 +1,23 @@
+"use strict";
+exports.__esModule = true;
+exports.mymod = void 0;
 //Ability Modifier calculation
-/*
 Modifier();
 function Modifier() {
     console.log("ability modifier");
-    var abScore = document.querySelector("ab-score");
+    var abScore = document.querySelectorAll(".ab-score");
+    var abMods = document.querySelectorAll(".ab-mod");
+    console.log("CHANGES!!!!!!");
     for (var i = 0; i < abScore.length; i++) {
-        console.log("CHANGES!!!!!!");
-        abScore.addEventListener('change', function (event) {
-            var sel = abScore.selectedIndex;
-            var opt = abScore.options[sel];
-            console.log(opt);
-            var num = parseInt(opt.value);
-            var modifier = num - 10 / 2;
-            console.log(modifier);
+        abMods[i].innerText = "";
+        abScore[i].addEventListener('change', function () {
+            var sel = this.value;
+            console.log(this.selectedIndex);
+            var num = parseInt(sel);
+            console.log(num);
+            var modifier = Math.round((num - 10) / 2);
+            console.log('this mod: ' + modifier);
         });
     }
 }
-*/
+exports.mymod = Modifier;

@@ -37,15 +37,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var alignment = [];
 var _classes = [];
 var races = [];
+var raceBonuses = [];
 var standardArray = [15, 14, 13, 12, 10, 8];
 var apiClasses = 'https://www.dnd5eapi.co/api/classes/?results';
 var apiAlignment = 'https://www.dnd5eapi.co/api/alignments/?results';
 var apiRaces = 'https://www.dnd5eapi.co/api/races/?results';
 getOptions();
-Modifier();
 function getOptions() {
     return __awaiter(this, void 0, void 0, function () {
-        var alignRes, align, alignmentOptions, i, option, classRes, _class, classOptions, i, option, raceRes, race, raceOptions, i, option;
+        var alignRes, align, alignmentOptions, i, option, classRes, _class, classOptions, i, option, raceRes, race, raceOptions, i, option, raceBonus;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, fetch(apiAlignment)];
@@ -100,6 +100,29 @@ function getOptions() {
                         option.text = races[i].name;
                         raceOptions === null || raceOptions === void 0 ? void 0 : raceOptions.appendChild(option);
                     }
+                    raceBonus = document.querySelector('#raceSelect');
+                    raceBonus.addEventListener('change', function () {
+                        return __awaiter(this, void 0, void 0, function () {
+                            var raceB, bonusRes, newBonus;
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0:
+                                        raceB = this.value;
+                                        return [4 /*yield*/, fetch('https://www.dnd5eapi.co/api/races/' + raceB.toLowerCase() + '?results')];
+                                    case 1:
+                                        bonusRes = _a.sent();
+                                        return [4 /*yield*/, bonusRes.json()];
+                                    case 2:
+                                        newBonus = _a.sent();
+                                        newBonus.ability_bonuses.map(function (element) {
+                                            raceBonuses.push(element);
+                                        });
+                                        console.log(raceBonuses);
+                                        return [2 /*return*/];
+                                }
+                            });
+                        });
+                    });
                     return [2 /*return*/];
             }
         });
@@ -114,26 +137,5 @@ for (var i = 0; i < standardArray.length; i++) {
         opt.value = standardArray[j].toString();
         opt.text = standardArray[j].toString();
         asOptions[i].appendChild(opt);
-    }
-}
-function Modifier() {
-    console.log("ability modifier");
-    var abScore = document.querySelector(".stat-block.ab-score");
-    console.log("CHANGES!!!!!!");
-    for (var i = 0; i < abScore.length; i++) {
-        abScore.addEventListener('change', function () {
-            var res = this.value;
-            console.log(res);
-            /*
-                console.log('E: '+e);
-                console.log(abScore.value);
-                var opt = abScore.innerHTML;
-                console.log(parseInt(opt[0]));
-                var num = parseInt(opt);
-                console.log(num);
-                var modifier = (num - 10) / 2;
-                console.log('this mod: '+modifier);
-                */
-        });
     }
 }

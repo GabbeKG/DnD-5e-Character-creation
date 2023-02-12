@@ -1,6 +1,9 @@
+
+
 var alignment: any[]= [];
 var _classes: any[]=[];
 var races:any[]=[];
+var raceBonuses:any[]=[];
 var standardArray:number[]=[15,14,13,12,10,8];
 
 
@@ -8,7 +11,7 @@ const apiClasses='https://www.dnd5eapi.co/api/classes/?results';
 const apiAlignment='https://www.dnd5eapi.co/api/alignments/?results';
 const apiRaces='https://www.dnd5eapi.co/api/races/?results'
 getOptions();
-Modifier();
+
 async function getOptions():Promise <void> {
     //Alignment
   const alignRes = await fetch(apiAlignment);
@@ -53,6 +56,19 @@ async function getOptions():Promise <void> {
     option.text=races[i].name;
     raceOptions?.appendChild(option);
   }
+
+  //Race Bonuses
+
+  const raceBonus=document.querySelector('#raceSelect') as HTMLSelectElement;
+  raceBonus.addEventListener('change',async function(){
+    var raceB=this.value;
+    const bonusRes= await fetch('https://www.dnd5eapi.co/api/races/'+raceB.toLowerCase()+'?results');
+    const newBonus= await bonusRes.json();
+    newBonus.ability_bonuses.map((element:any)=>{
+      raceBonuses.push(element)
+    })
+    console.log(raceBonuses);
+  })
 }
 //ABILITY SCORE OPTIONS
 const asOptions=document.getElementsByClassName("ab-score");
@@ -65,28 +81,6 @@ for(let i = 0; i<standardArray.length;i++){
     asOptions[i].appendChild(opt);
   }
 }
-function Modifier() {
-    console.log("ability modifier");
-    const abScore = document.querySelector(".stat-block.ab-score") as HTMLSelectElement;
-    console.log("CHANGES!!!!!!");
-    for (var i = 0; i < abScore.length; i++) {
-      
-        abScore.addEventListener('change', function() {
-          let res=this.value;
 
-          console.log(res);
-        /*
-            console.log('E: '+e);
-            console.log(abScore.value);
-            var opt = abScore.innerHTML;
-            console.log(parseInt(opt[0]));
-            var num = parseInt(opt);
-            console.log(num);
-            var modifier = (num - 10) / 2;
-            console.log('this mod: '+modifier);
-            */
-        });
-       
-    }
-}
 
+        
