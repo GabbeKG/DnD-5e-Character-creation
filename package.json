@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "dnd character creation",
   "main": "index.js",
-  
   "dependencies": {
     "abortcontroller-polyfill": "^1.7.5",
     "acorn": "^8.8.2",
@@ -103,13 +102,14 @@
     "yaml": "^1.10.2"
   },
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.3",
     "parcel": "^2.8.3"
   },
   "scripts": {
     "start": "parcel",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "source": "src/index.html",
+  "source": "index.html",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GabbeKG/DnD-5e-Character-creation.git"

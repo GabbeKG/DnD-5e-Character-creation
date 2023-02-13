@@ -59,16 +59,7 @@ async function getOptions():Promise <void> {
 
   //Race Bonuses
 
-  const raceBonus=document.querySelector('#raceSelect') as HTMLSelectElement;
-  raceBonus.addEventListener('change',async function(){
-    var raceB=this.value;
-    const bonusRes= await fetch('https://www.dnd5eapi.co/api/races/'+raceB.toLowerCase()+'?results');
-    const newBonus= await bonusRes.json();
-    newBonus.ability_bonuses.map((element:any)=>{
-      raceBonuses.push(element)
-    })
-    console.log(raceBonuses);
-  })
+
 }
 //ABILITY SCORE OPTIONS
 const asOptions=document.getElementsByClassName("ab-score");
