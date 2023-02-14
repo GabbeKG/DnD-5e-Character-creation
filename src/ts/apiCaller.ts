@@ -4,15 +4,20 @@ var alignment: any[]= [];
 var _classes: any[]=[];
 var races:any[]=[];
 var raceBonuses:any[]=[];
-var standardArray:number[]=[15,14,13,12,10,8];
+var skillArr:any[]=[];
+var skillArrIndex:any[]=[];
+var standardArray:any[]=['Select score...',15,14,13,12,10,8];
 
 
 const apiClasses='https://www.dnd5eapi.co/api/classes/?results';
 const apiAlignment='https://www.dnd5eapi.co/api/alignments/?results';
 const apiRaces='https://www.dnd5eapi.co/api/races/?results'
-getOptions();
+const apiSkill='https://www.dnd5eapi.co/api/skills?results'
+const apiSkillIndex='https://www.dnd5eapi.co/api/skills/'
+const apiBase='https://www.dnd5eapi.co';
+getData();
 
-async function getOptions():Promise <void> {
+async function getData():Promise <void> {
     //Alignment
   const alignRes = await fetch(apiAlignment);
   const align= await alignRes.json();
@@ -60,8 +65,44 @@ async function getOptions():Promise <void> {
   //Race Bonuses
 
 
+  
+  //Skills
+  
+  const skillRes = await fetch(apiSkill);
+  const skill= await skillRes.json();
+  console.log(skill);
+  skill.results.map((element: any)=>{
+    skillArr.push(element.name)
+  })
+  for(let i=0;i<skillArr.length;i++){
+    var index=skillArr[i].toLowerCase();
+    
+    const skillIndexRes=await fetch(apiSkillIndex+index.toString().replace(/ /g,'-')+'?results');
+    const s=await skillIndexRes.json();
+    console.log(s.ability_score)
+    const asRes=await fetch(apiBase+s.ability_score.url+'?results');
+    const asJson=await asRes.json();    
+      skillArrIndex.push(asJson.name)
+    
+  }
+  const loaderText=document.querySelector('#loader') as HTMLDivElement;
+  const loader=document.querySelector('.loader') as HTMLDivElement;
+  const skillList= document.querySelector(".skillsDiv ul");
+  for(let i=0;i<skillArr.length;i++){
+    const newSkillListItem=document.createElement('li');
+    const newSkillListItemInp=document.createElement('input');
+    newSkillListItemInp.type='checkbox';
+    newSkillListItemInp.value=skillArr[i];
+    newSkillListItem.innerHTML=skillArr[i]+' ('+skillArrIndex[i]+')';
+    newSkillListItem.appendChild(newSkillListItemInp);
+    skillList?.appendChild(newSkillListItem);
+  }
+  loaderText.style.display='none';
+  loader.style.display='none';
 }
+
 //ABILITY SCORE OPTIONS
+
 const asOptions=document.getElementsByClassName("ab-score");
 for(let i = 0; i<standardArray.length;i++){
   for(let j=0;j<standardArray.length;j++){
@@ -69,9 +110,8 @@ for(let i = 0; i<standardArray.length;i++){
     opt.className='ab-score-option';
     opt.value=standardArray[j].toString();
     opt.text=standardArray[j].toString();
-    asOptions[i].appendChild(opt);
+    asOptions[i]?.appendChild(opt);
   }
 }
 
 
-        

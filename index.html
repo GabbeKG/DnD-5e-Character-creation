@@ -2,153 +2,20 @@
 <html>
   <head>
     <title> </title>
-<link rel="stylesheet" href="./src/scss/main.scss">
-<script type="module" defer src="./src/ts/apiCaller.ts"></script>
-<script type="module" defer src="./src/ts/calculations.ts"></script>
+    <link rel="stylesheet" href="./src/scss/main.scss" />
+    <script type="module" defer src="./src/ts/index.ts"></script>
+    <script type="module" defer src="./src/ts/apiCaller.ts"></script>
+    <script type="module" defer src="./src/ts/calculations.ts"></script>
   </head>
   <body>
     <!-- 9 kolumner bredd 10-20 rader hög -->
-    <div class="container grid">
-     <nav id="nav">
-       <ul>
-         <li>Create Character</li>
-         <li>View Characters</li>
-       </ul>
-     </nav>
-     <div id="char-modal"></div>
-    <!--Governs basic character input info-->
-      <div id="hero-section">
-        <div class="char-desc">
-          
-            <label class="lblDesc">Character name:</label
-            ><input type="text" placeholder="Name your character..." />
-          
-          <label class="lblDesc"
-            >Class:
-            <select id="clsSelect" name="class"></select
-          ></label>
-          <label class="lblDesc"
-            >Level: <input type="number" min="1" id="level"
-          /></label>
-          <label class="lblDesc"
-            >Player Name: <input type="text" placeholder="Player name"
-          /></label>
-          <label class="lblDesc"
-            >Race:
-            <select id="raceSelect"></select
-          ></label>
-          <label class="lblDesc"
-            >Alignment:
-            <select id="alignmentSelect" name="alignment"></select
-          ></label>
-          <label class="lblDesc">Experience Points</label>
-        </div>
-      </div>
-      <!--ABility score or "Stats/attributes"-->
-      <div class="stat-block">
-        <div class="attr-container">
-
-          <div class="info">
-            Strength &#x1F6C8
-            
-            <span class="tooltip"
-            >Strength measures bodily power, athletic Training, and the extent
-            to which you can exert raw physical force.</span
-            >
-          </div>
-          <div class="attribute">
-            <div>
-              <select class="ab-score str"></select>
-              <div class="ab-mod str"><h2>+3</h2></div>
-            </div>
-          </div>
-          <div class="info">
-            Dexterity &#x1F6C8
-            <span class="tooltip"
-            >Dexterity measures agility, reflexes, and balance. Also effects Initiative.
-          </span>
-        </div>
-        <div class="attribute">
-          <div>
-            <select class="ab-score dex"></select>
-            <div class="ab-mod dex"><h2>+3</h2></div>
-          </div>
-        </div>
-        <div class="info">
-          Constitution &#x1F6C8
-          <span class="tooltip"
-          >Constitution measures health, stamina, and vital force.</span
-          >
-        </div>
-        <div class="attribute">
-          <div>
-            <select class="ab-score con"></select>
-            <div class="ab-mod con"><h2>+3</h2></div>
-          </div>
-        </div>
-        <div class="info">
-          Intelligence &#x1F6C8
-          <span class="tooltip"
-          >Intelligence measures mental acuity, accuracy of recall, and the
-          ability to reason.</span
-          >
-        </div>
-        <div class="attribute">
-          <div>
-            <select class="ab-score int"></select>
-            <div class="ab-mod int"><h2>+3</h2></div>
-          </div>
-        </div>
-        <div class="info">
-          Wisdom &#x1F6C8
-          <span class="tooltip"
-          >Wisdom reflects how attuned you are to the world around you and
-          represents perceptiveness and intuition.</span
-          >
-        </div>
-        <div class="attribute">
-          <div>
-            <select class="ab-score wis"></select>
-            <div class="ab-mod wis"><h2>+3</h2></div>
-          </div>
-        </div>
-        <div class="info">
-          Charisma &#x1F6C8
-          <span class="tooltip"
-          >Charisma measures your ability to interact effectively with
-          others. It includes such factors as confidence and eloquence, and
-          it can represent a charming or commanding Personality.</span
-          >
-        </div>
-        <div class="attribute">
-          <div>
-            <select class="ab-score cha"></select>
-            <div class="ab-mod cha"><h2>+3</h2></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--Ability modifers based on class and distribution of points-->
-      <div class="ability-mod">
-        <div class="inspiration abi"><h2>Insperation</h2></div>
-        <div class="Proficiency-bonus abi"><h2>Proficiency Bonus</h2></div>
-        <div class="saving-throws abi"><h2>Saving throws</h2></div>
-        <div class="skills abi"><h2>Skills</h2></div>
-      </div>
-      <div class="passive-wisdom"><h2>Passive wisdom</h2></div>
-      <div class="other-profs-and-languages">
-        <h2>Other Professions and Languages</h2>
-      </div>
-      <div class="combat-stats"><h2>Combat</h2></div>
-      <div class="equipment">
-        <h2>Equipment</h2>
-        <div id="attacks_spells"><h2>Attacks & Spells</h2></div>
-        <div id="inventory"><h2>Inventory</h2></div>
-      </div>
-      <div id="bio">Biography</div>
-      <div id="features_traits">Features & Traits</div>
-    </div>
-
+    <div id="container">
+      <nav id="nav">
+        <ul>
+          <span><li>Create Character</li></span>
+          <span><li>View Characters</li></span>
+        </ul>
+      </nav>
+    </body>
+    </html>
     
-  </body>
-</html>

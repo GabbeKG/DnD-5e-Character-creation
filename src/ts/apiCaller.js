@@ -34,18 +34,24 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var _a;
 var alignment = [];
 var _classes = [];
 var races = [];
 var raceBonuses = [];
-var standardArray = [15, 14, 13, 12, 10, 8];
+var skillArr = [];
+var skillArrIndex = [];
+var standardArray = ['Select score...', 15, 14, 13, 12, 10, 8];
 var apiClasses = 'https://www.dnd5eapi.co/api/classes/?results';
 var apiAlignment = 'https://www.dnd5eapi.co/api/alignments/?results';
 var apiRaces = 'https://www.dnd5eapi.co/api/races/?results';
-getOptions();
-function getOptions() {
+var apiSkill = 'https://www.dnd5eapi.co/api/skills?results';
+var apiSkillIndex = 'https://www.dnd5eapi.co/api/skills/';
+var apiBase = 'https://www.dnd5eapi.co';
+getData();
+function getData() {
     return __awaiter(this, void 0, void 0, function () {
-        var alignRes, align, alignmentOptions, i, option, classRes, _class, classOptions, i, option, raceRes, race, raceOptions, i, option, raceBonus;
+        var alignRes, align, alignmentOptions, i, option, classRes, _class, classOptions, i, option, raceRes, race, raceOptions, i, option, skillRes, skill, i, index, skillIndexRes, s, asRes, asJson, loaderText, loader, skillList, i, newSkillListItem, newSkillListItemInp;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, fetch(apiAlignment)];
@@ -100,29 +106,54 @@ function getOptions() {
                         option.text = races[i].name;
                         raceOptions === null || raceOptions === void 0 ? void 0 : raceOptions.appendChild(option);
                     }
-                    raceBonus = document.querySelector('#raceSelect');
-                    raceBonus.addEventListener('change', function () {
-                        return __awaiter(this, void 0, void 0, function () {
-                            var raceB, bonusRes, newBonus;
-                            return __generator(this, function (_a) {
-                                switch (_a.label) {
-                                    case 0:
-                                        raceB = this.value;
-                                        return [4 /*yield*/, fetch('https://www.dnd5eapi.co/api/races/' + raceB.toLowerCase() + '?results')];
-                                    case 1:
-                                        bonusRes = _a.sent();
-                                        return [4 /*yield*/, bonusRes.json()];
-                                    case 2:
-                                        newBonus = _a.sent();
-                                        newBonus.ability_bonuses.map(function (element) {
-                                            raceBonuses.push(element);
-                                        });
-                                        console.log(raceBonuses);
-                                        return [2 /*return*/];
-                                }
-                            });
-                        });
+                    return [4 /*yield*/, fetch(apiSkill)];
+                case 7:
+                    skillRes = _a.sent();
+                    return [4 /*yield*/, skillRes.json()];
+                case 8:
+                    skill = _a.sent();
+                    console.log(skill);
+                    skill.results.map(function (element) {
+                        skillArr.push(element.name);
                     });
+                    i = 0;
+                    _a.label = 9;
+                case 9:
+                    if (!(i < skillArr.length)) return [3 /*break*/, 15];
+                    index = skillArr[i].toLowerCase();
+                    return [4 /*yield*/, fetch(apiSkillIndex + index.toString().replace(/ /g, '-') + '?results')];
+                case 10:
+                    skillIndexRes = _a.sent();
+                    return [4 /*yield*/, skillIndexRes.json()];
+                case 11:
+                    s = _a.sent();
+                    console.log(s.ability_score);
+                    return [4 /*yield*/, fetch(apiBase + s.ability_score.url + '?results')];
+                case 12:
+                    asRes = _a.sent();
+                    return [4 /*yield*/, asRes.json()];
+                case 13:
+                    asJson = _a.sent();
+                    skillArrIndex.push(asJson.name);
+                    _a.label = 14;
+                case 14:
+                    i++;
+                    return [3 /*break*/, 9];
+                case 15:
+                    loaderText = document.querySelector('#loader');
+                    loader = document.querySelector('.loader');
+                    skillList = document.querySelector(".skillsDiv ul");
+                    for (i = 0; i < skillArr.length; i++) {
+                        newSkillListItem = document.createElement('li');
+                        newSkillListItemInp = document.createElement('input');
+                        newSkillListItemInp.type = 'checkbox';
+                        newSkillListItemInp.value = skillArr[i];
+                        newSkillListItem.innerHTML = skillArr[i] + ' (' + skillArrIndex[i] + ')';
+                        newSkillListItem.appendChild(newSkillListItemInp);
+                        skillList === null || skillList === void 0 ? void 0 : skillList.appendChild(newSkillListItem);
+                    }
+                    loaderText.style.display = 'none';
+                    loader.style.display = 'none';
                     return [2 /*return*/];
             }
         });
@@ -136,6 +167,6 @@ for (var i = 0; i < standardArray.length; i++) {
         opt.className = 'ab-score-option';
         opt.value = standardArray[j].toString();
         opt.text = standardArray[j].toString();
-        asOptions[i].appendChild(opt);
+        (_a = asOptions[i]) === null || _a === void 0 ? void 0 : _a.appendChild(opt);
     }
 }

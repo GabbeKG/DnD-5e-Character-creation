@@ -1,4 +1,17 @@
 @mixin background-col{
-    background-color: rgba(90, 93, 95, 0.8);
+    background-color: rgba(90, 93, 95, 0.6);
         border: solid 2px rgba(122, 122, 122, 0.8);
+}
+@mixin modifier-styling{
+    border-radius: 50%;
+        color: rgb(19, 19, 19);
+        background-color: rgba(255, 255, 255, 0.952);
+        border: groove 2px #000;
+        width: 4vh;
+        text-align: center;
+        line-height: 4vh;
+        font-size: 22px;
+        font-weight: 900;
+        display: inline-block;
+        margin:0 10%;
 }

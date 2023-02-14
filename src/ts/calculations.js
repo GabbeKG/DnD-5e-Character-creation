@@ -1,3 +1,4 @@
+//Ability Modifier calculation
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -34,16 +35,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-//Ability Modifier calculation
 Modifier();
 function Modifier() {
     return __awaiter(this, void 0, void 0, function () {
-        var abScore, abMods, raceBonus, i;
+        var abScore, abMods, selectedClass, raceBonus, i;
         return __generator(this, function (_a) {
             console.log("ability modifier");
             abScore = document.querySelectorAll(".ab-score");
             abMods = document.querySelectorAll(".ab-mod");
-            console.log("CHANGES!!!!!!");
+            selectedClass = document.querySelector("#clsSelect");
             raceBonus = document.querySelector('#raceSelect');
             raceBonus.addEventListener('change', function () {
                 return __awaiter(this, void 0, void 0, function () {
@@ -69,13 +69,12 @@ function Modifier() {
                     });
                 });
             });
+            //Apply eventlistener onchange on stat options
             for (i = 0; i < abScore.length; i++) {
                 abMods[i].innerText = "";
                 abScore[i].addEventListener('change', function () {
                     var _a;
                     var sel = this.value;
-                    console.log(this.selectedIndex);
-                    //console.log("bonus: "+raceBonuses[0].bonus)    
                     var num = parseInt(sel);
                     var modifier;
                     for (var b = 0; b < raceBonuses.length; b++) {
@@ -90,6 +89,19 @@ function Modifier() {
                     }
                 });
             }
+            selectedClass.addEventListener('change', function () {
+                console.log(selectedClass.value);
+                if (selectedClass.value !== ('')) {
+                    for (var i_1 = 0; i_1 < abScore.length; i_1++) {
+                        abScore[i_1].disabled = false;
+                    }
+                }
+                else {
+                    for (var i_2 = 0; i_2 < abScore.length; i_2++) {
+                        abScore[i_2].disabled = true;
+                    }
+                }
+            });
             return [2 /*return*/];
         });
     });

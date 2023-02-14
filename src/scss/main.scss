@@ -11,53 +11,251 @@
 body {
     width: 180vh;
     height: auto;
-    display:flex;
-    color: aliceblue;
+    //display:flex;
+    color: rgb(240, 248, 255);
     background-image: url("../images/SCAG_2560x1600_Wallpaper.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
-    margin: 0 auto;
     font-family: "Metamorphous", cursive;
     //font-family: "Space Mono", monospace;
 }
-.grid>div{
+
+#container{
+    background-color: none;
+    margin: 0 auto;
+    width:110vh;
+    display: flex;
+    flex-direction: column;
+    #save{
+        margin:0 auto;
+        height: 5vh;
+        font-family: "Metamorphous", cursive;
+    }
+
+}
+div, nav{
     @include background-col;
 }
-#nav ul{
 
-    display: flex;
-}
+
 #nav li{
+    display: inline-block;
+    width:50vh;
     list-style: none;
-    display: block;
+    
+    justify-content: center;
+    text-align: center;
+    
+    
+    
+    background-color: rgba(1, 59, 30, 0.9);
 }
+#nav li:hover{
+    box-shadow:rgba(255, 238, 0, 0.9) 0px 0px 10px 5px;
+    background-color: rgba(119, 116, 70, 0.9);
+    
+}
+li{
+    list-style: none;
+}
+
 
 //======HERO SECTION========
 
 #hero-section{
-    height: 10vh;
-}
-.stat-block{
-    display: flex;
+    height: 5vh;
+    margin:2vh auto;
     
-    text-align: center;
-    width:15vh;
+
+    .lblHero{
+        margin:0 5px;
+        
+    }
 }
 
+.wrapper{
+    display: flex;
+    background-color: none;
+}
+
+//=======Ability Score=======
+#stat-block {
+    display: inline-block;
+    //flex-direction: column;
+    text-align: center;
+    width:15vh;
+    margin:2vh;
+}
+
+
+//Modifier
+
+#ability-mod{
+    
+    width:40vh;
+}
+.inspiration{
+    padding:5px 0;
+    text-align: center;
+    display: flex;
+    
+    line-height: 5vh;
+}
+.inspireValue{
+    @include modifier-styling;
+}
+.bonusDiv{
+    padding: 5px 0;
+        text-align: center;
+        display: flex;
+        margin:auto 0;
+        line-height: 5vh;
+}
+.bonusValue{
+    @include modifier-styling;
+}
+div{
+    
+    margin-bottom: 10px;
+}
+#saving-throws{
+        display: flex;
+        justify-content: center;
+        
+        border-bottom: groove 1px rgb(240, 248, 255);
+        background-color:rgba(43, 40, 40,0.3);
+        margin-bottom: 10px;
+        padding: 10px;
+    
+}
+
+.skillsDiv{
+    #skills {
+            display: flex;
+            justify-content: center;
+    
+            border-bottom: groove 1px rgb(240, 248, 255);
+            background-color: rgba(43, 40, 40, 0.3);
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+        
+            li{
+                height: 30px;
+            }
+        
+}
 //Tooltip
 .tooltip {
     visibility: hidden;
     text-align: center;
     max-width: 500px;
     position: absolute;
+    
     line-height: 20px;
     z-index: 1;
     padding: 10px;
     background-color: rgb(43, 40, 40);
 }
 
-.info:hover .tooltip {
+.info:hover .tooltip, .inspiration:hover .tooltip {
     visibility: visible;
+}
+
+//Loader
+#loader{
+    display: flex;
+    justify-content: center;
+}
+.loader {
+    margin: 50% auto;
+    width: 54px;
+    height: 54px;
+    position: relative;
+    border-radius: 4px;
+    background-color: #8b2222;
+    background-image:
+        radial-gradient(circle 5px, #d4d4d4 100%, transparent 0),
+        radial-gradient(circle 5px, #d4d4d4 100%, transparent 0),
+        radial-gradient(circle 5px, #d4d4d4 100%, transparent 0),
+        radial-gradient(circle 5px, #d4d4d4 100%, transparent 0),
+        radial-gradient(circle 5px, #d4d4d4 100%, transparent 0),
+        radial-gradient(circle 5px, #d4d4d4 100%, transparent 0);
+    background-repeat: no-repeat;
+    animation: move 4s linear infinite, rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+
+    0%,
+    20% {
+        transform: rotate(0deg)
+    }
+
+    30%,
+    40% {
+        transform: rotate(90deg)
+    }
+
+    50%,
+    60% {
+        transform: rotate(180deg)
+    }
+
+    70%,
+    80% {
+        transform: rotate(270deg)
+    }
+
+    90%,
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes move {
+
+    0%,
+    9% {
+        background-position:
+            -12px -15px, -12px 0px, -12px 15px,
+            12px -15px, 12px 0px, 12px 15px;
+    }
+
+    10%,
+    25% {
+        background-position:
+            0px -15px, -12px 0px, -12px 15px,
+            34px -15px, 12px 0px, 12px 15px;
+    }
+
+    30%,
+    45% {
+        background-position:
+            0px -34px, -12px -10px, -12px 12px,
+            34px -15px, 12px -10px, 12px 12px;
+    }
+
+    50%,
+    65% {
+        background-position:
+            0px -34px, -12px -34px, -12px 12px,
+            34px -12px, 0px -10px, 12px 12px;
+    }
+
+    70%,
+    85% {
+        background-position:
+            0px -34px, -12px -34px, 0px 12px,
+            34px -12px, 0px -10px, 34px 12px;
+    }
+
+    90%,
+    100% {
+        background-position:
+            0px -34px, -12px -34px, 0px 0px,
+            34px -12px, 0px 0px, 34px 12px;
+    }
 }
