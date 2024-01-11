@@ -41,7 +41,6 @@
     "get-port": "^4.2.0",
     "globals": "^13.20.0",
     "has-flag": "^4.0.0",
-    "htmlnano": "^2.0.3",
     "htmlparser2": "^7.2.0",
     "import-fresh": "^3.3.0",
     "is-arrayish": "^0.2.1",
@@ -87,7 +86,6 @@
     "srcset": "^4.0.0",
     "stable": "^0.1.8",
     "supports-color": "^7.2.0",
-    "svgo": "^2.8.0",
     "term-size": "^2.2.1",
     "terser": "^5.16.2",
     "timsort": "^0.3.0",
@@ -103,7 +101,7 @@
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.3",
-    "parcel": "^2.8.3"
+    "parcel": "^2.11.0"
   },
   "scripts": {
     "start": "parcel",
