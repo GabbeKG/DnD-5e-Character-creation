@@ -52,7 +52,7 @@
     "json-parse-even-better-errors": "^2.3.1",
     "json5": "^2.2.3",
     "lightningcss": "^1.22.0",
-    "lightningcss-cli-linux-x64-gnu": "^1.22.0",
+    
     "lines-and-columns": "^1.2.4",
     "lmdb": "^2.5.2",
     "mdn-data": "^2.0.14",
