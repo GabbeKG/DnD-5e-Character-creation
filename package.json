@@ -111,7 +111,7 @@
   "scripts": {
     "start": "parcel",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run build"
+    "build": "npx -p parcel-bundler parcel build index.html"
   },
   "source": "index.html",
   "repository": {
