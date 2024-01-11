@@ -4,6 +4,7 @@
   "description": "dnd character creation",
   "main": "index.js",
   "dependencies": {
+    "@parcel/watcher-linux-x64-glibc": "^2.3.0",
     "abortcontroller-polyfill": "^1.7.5",
     "acorn": "^8.8.2",
     "ansi-styles": "^4.3.0",
@@ -52,7 +53,6 @@
     "json-parse-even-better-errors": "^2.3.1",
     "json5": "^2.2.3",
     "lightningcss": "^1.22.0",
-    
     "lines-and-columns": "^1.2.4",
     "lmdb": "^2.5.2",
     "mdn-data": "^2.0.14",
@@ -104,7 +104,6 @@
     "parcel": "^2.11.0",
     "parcel-bundler": "^1.12.5"
   },
-
   "scripts": {
     "start": "parcel",
     "test": "echo \"Error: no test specified\" && exit 1",
