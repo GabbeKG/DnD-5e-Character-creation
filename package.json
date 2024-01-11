@@ -52,7 +52,7 @@
     "json-parse-even-better-errors": "^2.3.1",
     "json5": "^2.2.3",
     "lightningcss": "^1.22.0",
-    "lightningcss-cli-linux-x64-gnu": "^1.22.0",
+    "lightningcss-cli-win32-x64-msvc": "^1.22.0",
     "lines-and-columns": "^1.2.4",
     "lmdb": "^2.5.2",
     "mdn-data": "^2.0.14",
@@ -101,17 +101,14 @@
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.3",
-    "parcel": "^2.11.0"
+    "parcel": "^2.11.0",
+    "parcel-bundler": "^1.12.5"
   },
-  "engines": {
-    
-    "parcel-bundler": "^2.0.0"
-  },
-  
+
   "scripts": {
     "start": "parcel",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm build"
+    "build": "parcel build index.html"
   },
   "source": "index.html",
   "repository": {
