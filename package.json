@@ -2,7 +2,7 @@
   "name": "dnd-5e-character-creation",
   "version": "1.0.0",
   "description": "dnd character creation",
-  "main": "index.html",
+  
   "dependencies": {
     "abortcontroller-polyfill": "^1.7.5",
     "acorn": "^8.8.2",
